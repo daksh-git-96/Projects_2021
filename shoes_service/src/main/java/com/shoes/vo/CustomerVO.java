@@ -11,7 +11,7 @@ public class CustomerVO {
 	private String password;
 	private String mobile;
 	private String gender;
-	private byte[] profilePhoto;
+	private String profilePhoto;
 	private String role;
 	private Timestamp doe;
 	
@@ -71,11 +71,11 @@ public class CustomerVO {
 		this.gender = gender;
 	}
 	
-	public byte[] getProfilePhoto() {
+	public String getProfilePhoto() {
 		return profilePhoto;
 	}
 	
-	public void setProfilePhoto(byte[] profilePhoto) {
+	public void setProfilePhoto(String profilePhoto) {
 		this.profilePhoto = profilePhoto;
 	}
 	
@@ -90,9 +90,10 @@ public class CustomerVO {
 	@Override
 	public String toString() {
 		return "CustomerVO [id=" + id + ", userid=" + userid + ", email=" + email + ", password=" + password
-				+ ", mobile=" + mobile + ", gender=" + gender + ", profilePhoto=" + Arrays.toString(profilePhoto)
-				+ ", role=" + role + ", doe=" + doe + "]";
+				+ ", mobile=" + mobile + ", gender=" + gender + ", profilePhoto=" + profilePhoto + ", role=" + role
+				+ ", doe=" + doe + "]";
 	}
+
 	
 	
 	

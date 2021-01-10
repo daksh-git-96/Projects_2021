@@ -21,7 +21,9 @@ public class Customer {
 	private String password;
 	private String mobile;
 	private String gender;
-	private byte[] profilePhoto;
+	private String profilePhoto;
+
+
 	private String role;
 	private Timestamp doe;
 	
@@ -76,12 +78,11 @@ public class Customer {
 		this.gender = gender;
 	}
 	
-	public byte[] getProfilePhoto() {
+	public String getProfilePhoto() {
 		return profilePhoto;
 	}
-	
-	@Column(columnDefinition="longblob")
-	public void setProfilePhoto(byte[] profilePhoto) {
+
+	public void setProfilePhoto(String profilePhoto) {
 		this.profilePhoto = profilePhoto;
 	}
 	
@@ -104,9 +105,11 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", userid=" + userid + ", email=" + email + ", password=" + password + ", mobile="
-				+ mobile + ", gender=" + gender + ", profilePhoto=" + Arrays.toString(profilePhoto) + ", role=" + role
-				+ ", doe=" + doe + "]";
+				+ mobile + ", gender=" + gender + ", profilePhoto=" + profilePhoto + ", role=" + role + ", doe=" + doe
+				+ "]";
 	}
+
+	
 	
 
 	

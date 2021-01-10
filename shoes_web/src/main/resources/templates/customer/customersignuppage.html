@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Customer Signup Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+body {
+	background-image:
+		url('https://osteopathicworks.com.au/wp-content/uploads/2017/07/running.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.ffooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+  height: 30px;
+  background-color:#e9ffe7;
+}
+</style>
+</head>
+<body>
+<header style="height: 30px; background-color: grey;"> </header>
+	<div class="container" align="center">
+		<form th:action="@{/customer/signUpPage}" method="post"
+			th:object="${customerVO}">
+		<br>
+		<h2 align="Center">Enter Details</h2>
+		<br>
+		<div class="form-group">
+			<label for="name">Userid:</label> 
+			<input type="text" style="width: 40%;" class="form-control" th:field="*{userid}"
+				placeholder="Enter userid">
+		</div>
+		
+		<div class="form-group">
+			<label for="name">Email Id:</label> 
+			<input type="email" style="width: 40%;" class="form-control" th:field="*{email}"
+				placeholder="Enter emailid">
+		</div>
+		
+		<div class="form-group">
+			<label for="name">Password:</label> 
+			<input type="password" style="width: 40%;" class="form-control" th:field="*{password}"
+				placeholder="Enter password">
+		</div>
+
+		<div class="form-group">
+			<label for="name">Mobile:</label> 
+			<input type="text" style="width: 40%;" class="form-control" th:field="*{mobile}"
+				placeholder="Enter mobile">
+		</div>
+		
+		<div class="form-group">
+		<label for="name">Gender:</label>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="Male" name="Male" class="custom-control-input" value="Male" th:field="*{gender}">
+                <label class="custom-control-label" for="Male">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="Female" name="Female" class="custom-control-input" value="Female" th:field="*{gender}">
+                <label class="custom-control-label" for="Female">Female</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="Other" name="Other" class="custom-control-input" value="Other" th:field="*{gender}">
+                <label class="custom-control-label" for="Other">Other</label>
+            </div>
+        </div>
+		
+		<div class="form-group">
+			<label for="name">Profile Photo:</label> 
+			<input type="text" style="width: 40%;" class="form-control" th:field="*{profilePhoto}"
+				placeholder="Enter url">
+		</div>
+		
+		<div class="form-group">
+      <label for="Role">Role:</label>
+      <select style="width: 40%;"  class="form-control" th:field="*{role}">
+         <option value="Customer">Customer</option>
+         <option value="Administrator">Administrator</option>
+      </select>
+    </div>	
+
+	<button class="btn btn-primary" type="submit">Submit</button>
+	<br><br/>
+	<br><br/>
+	</form>
+	</div>
+<footer  class="ffooter">
+</footer>
+</body>
+</html>
