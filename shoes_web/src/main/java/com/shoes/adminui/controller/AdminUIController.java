@@ -1,5 +1,6 @@
 package com.shoes.adminui.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class AdminUIController {
 	private AdminAccountService adminAccountService;
 	
 	@Autowired
-	private RunningShoesService runningShoesService;
+	private RunningShoesService runningShoesService; 
 	
 	@GetMapping("/admin/adminpage")
 	public String adminHomePage() {
@@ -73,6 +74,13 @@ public class AdminUIController {
 		runningShoesService.saveNewRunningShoe(runningShoesVO);
 		model.addAttribute("message", "New Shoe Added.");
 		return "admin/dashboard";
+	}
+	
+	@GetMapping("/admin/shoesinventory")
+	public String shoesInventory(Model model) {
+		List<RunningShoesVO> listOfRunningShoes = runningShoesService.findAll();
+		model.addAttribute("listOfRunningShoes", listOfRunningShoes);
+		return "admin/shoesinventory";
 	}
 	
 }

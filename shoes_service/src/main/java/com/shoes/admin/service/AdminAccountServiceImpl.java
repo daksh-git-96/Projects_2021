@@ -46,5 +46,4 @@ public class AdminAccountServiceImpl implements AdminAccountService {
 		return mapsData;
 	}
 	
-	
 }
