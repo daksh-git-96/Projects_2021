@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Home Page</title>
+<title>Customer Login Page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -35,31 +35,37 @@ body {
 }
 </style>
 </head>
-
 <body>
-	<header style="height: 30px; background-color: green;"> </header>
-	<div class="container">
-		<br><br/>
-		<br><br/>
-		<h2 align="Center">Shoe Warehouse</h2>
-		<br><br/>
-		<br><br/>
-		<br><br/>
-		<div align = "center">
-		
-		<a th:href="@{customer/authenticationPage}">
-		<button type="submit" class="btn btn-success">Login</button>
-		</a>
-		
-		<a th:href="@{/customer/signUpPage}">
-			<button type="button" class="btn btn-primary">Sign Up</button>
-		</a>
-		</div>
-		<div align = "center">
-			<h3 th:utext="${message}"></h3>
-		</div>
+<header style="height: 30px; background-color: grey;"> </header>
+	<div class="container" align="center">
+		<form th:action="@{/customer/authentication}" method="post"
+			th:object="${customerVO}">
+			<br>
+			<h3 align="Center">Enter your credentials</h3>
+			<br>
+			<div class="form-group">
+				<label for="email">Email:</label> <input type="email"
+					style="width: 20%;" class="form-control" th:field="*{email}"
+					placeholder="Enter email">
+			</div>
+
+			<div class="form-group">
+				<label for="name">Password:</label> <input type="password"
+					style="width: 20%;" class="form-control" th:field="*{password}"
+					placeholder="Enter password">
+			</div>
+
+			<button class="btn btn-primary" type="submit">Submit</button>
+			<br />
+			<div align="center">
+				<h6 th:utext="${message}"></h6>
+			</div>
+			<br>
+			<br /> <br>
+			<br />
+		</form>
 	</div>
-<footer  class="ffooter">
+	<footer  class="ffooter">
 </footer>
 </body>
 </html>

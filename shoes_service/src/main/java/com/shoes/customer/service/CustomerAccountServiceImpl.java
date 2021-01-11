@@ -1,5 +1,11 @@
 package com.shoes.customer.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
@@ -18,11 +24,24 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
 	private CustomerAccountDetailsRepository customerAccountDetailsRepository;
 	
 	@Override
+	public Map<String, Object> findUserByEmail(String email, String password) {
+		Optional<Customer> optional = customerAccountDetailsRepository.findByEmailAndPassword(email, password);
+		Map<String, Object> mapsData = new HashMap<String, Object>();
+		if(optional.isPresent()) {
+			Customer customerEntity = optional.get();
+			mapsData.put("email", customerEntity.getEmail());
+			mapsData.put("password", customerEntity.getPassword());
+		}
+		return mapsData;
+	}
+	
+	@Override
 	public void saveNewCustomerDetails(CustomerVO customerVO) {
 		Customer customerEntity = new Customer();
-		customerEntity.setDoe(customerVO.getDoe());
+		customerVO.setDoe(new Timestamp(new Date().getTime()));
 		BeanUtils.copyProperties(customerVO, customerEntity);
 		customerAccountDetailsRepository.save(customerEntity);
 	}
+	
 	
 }

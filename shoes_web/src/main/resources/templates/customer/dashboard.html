@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Home Page</title>
+<title>Customer Dash board</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -41,12 +41,12 @@ body {
 	<div class="container">
 		<br><br/>
 		<br><br/>
-		<h2 align="Center">Shoe Warehouse</h2>
+		<h3 align="Center">Welcome</h3>
 		<br><br/>
 		<br><br/>
 		<br><br/>
-		<div align = "center">
 		
+		<!-- <div align = "center">
 		<a th:href="@{customer/authenticationPage}">
 		<button type="submit" class="btn btn-success">Login</button>
 		</a>
@@ -54,7 +54,7 @@ body {
 		<a th:href="@{/customer/signUpPage}">
 			<button type="button" class="btn btn-primary">Sign Up</button>
 		</a>
-		</div>
+		</div> -->
 		<div align = "center">
 			<h3 th:utext="${message}"></h3>
 		</div>
