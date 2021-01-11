@@ -59,4 +59,14 @@ public class CustomerUIController {
 		}
 	}
 	
+	@GetMapping("/customer/runningShoes")
+	public String runningShoesList() {
+		return "customer/runningshoes";
+	}
+	
+	@GetMapping("/customer/sneakers")
+	public String sneakersList() {
+		return "customer/sneakers";
+	}
+	
 }

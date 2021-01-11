@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Customer Dash board</title>
+<title>Admin Dashboard</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -16,7 +16,7 @@
 <style>
 body {
 	background-image:
-		url('https://osteopathicworks.com.au/wp-content/uploads/2017/07/running.jpg');
+		url('https://cdn.wallpapersafari.com/22/47/5o8BHX.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -43,17 +43,15 @@ body {
 		</div>
 	<div class="container">
 		<br><br/>
+		<br><br/>
 		<h3 align="Center">Welcome</h3>
 		<br><br/>
-		<br><br/>
-		<br><br/>
-		
 		<div align = "center">
-			<a th:href="@{/customer/runningShoes}">
-				<button type="submit" class="btn btn-info">Running Shoes</button>
+			<a th:href="@{/}">
+				<button type="submit" class="btn btn-info">Add Running Shoes</button>
 			</a> 
-			<a th:href="@{/customer/sneakers}">
-				<button type="submit" class="btn btn-info">Sneakers</button>
+			<a th:href="@{/}">
+				<button type="submit" class="btn btn-info">Add Sneakers</button>
 			</a>
 		</div>
 	</div>
