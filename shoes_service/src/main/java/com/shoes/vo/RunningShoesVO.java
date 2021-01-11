@@ -1,32 +1,34 @@
 package com.shoes.vo;
 
+import java.util.Arrays;
+
 public class RunningShoesVO {
 	
 	private int id;
+	private String brand;
 	private String name;
 	private String color;
 	private float price;
 	private float size;
-	private String photo;
+	private String gender;
+	private byte[] photo;
 	
-	private AdminVO adminVO;
-	
-	public AdminVO getAdminVO() {
-		return adminVO;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setAdminVO(AdminVO adminVO) {
-		this.adminVO = adminVO;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
-	public String getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
-	
-	public void setPhoto(String photo) {
+
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -67,10 +69,20 @@ public class RunningShoesVO {
 		this.size = size;
 	}
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	@Override
 	public String toString() {
-		return "RunningShoesVO [id=" + id + ", name=" + name + ", color=" + color + ", price=" + price + ", size="
-				+ size + ", photo=" + photo + "]";
+		return "RunningShoesVO [id=" + id + ", brand=" + brand + ", name=" + name + ", color=" + color + ", price="
+				+ price + ", size=" + size + ", gender=" + gender + ", photo=" + Arrays.toString(photo) + "]";
 	}
-	
+
+
+
 }

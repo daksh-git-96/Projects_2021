@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Running Shoe</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+body {
+	background-image:
+		url('https://cdn.statically.io/img/wallpaperplay.com/walls/full/f/f/b/96300.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.ffooter {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: red;
+	color: white;
+	text-align: center;
+	height: 30px;
+	background-color: #e9ffe7;
+}
+</style>
+</head>
+<body>
+	<header style="height: 30px; background-color: grey;"> </header>
+	<div class="container" align="center">
+		<div class="card" style="width: 35rem; height: 55rem;">
+			<div class="card-body">
+				<form th:action="@{/admin/newRunningShoe}" method="post"
+					th:object="${runningshoesVO}">
+					<br>
+					<h2 align="Center">Enter Shoe Details</h2>
+					<br>
+
+					<div class="form-group">
+						<label for="brand">Brand:</label> <select style="width: 35%;"
+							class="form-control" th:field="*{brand}">
+							<option value="Nike">Nike</option>
+							<option value="Adidas">Adidas</option>
+							<option value="Saucony">Saucony</option>
+							<option value="Hoka">Hoka</option>
+							<option value="Asics">Asics</option>
+							<option value="Brooks">Brooks</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="name">Name:</label> <input type="text"
+							style="width: 35%;" class="form-control" th:field="*{name}"
+							placeholder="Enter name">
+					</div>
+
+					<div class="form-group">
+						<label for="name">Color:</label> <input type="text"
+							style="width: 35%;" class="form-control" th:field="*{color}"
+							placeholder="Enter color">
+					</div>
+
+					<div class="form-group">
+						<label for="name">Price:</label> <input type="text"
+							style="width: 35%;" class="form-control" th:field="*{price}"
+							placeholder="Enter price">
+					</div>
+
+					<div class="form-group">
+						<label for="size">Size:</label> <select style="width: 20%;"
+							class="form-control" th:field="*{size}">
+							<option value="6.0">6.0</option>
+							<option value="6.5">6.5</option>
+							<option value="7.0">7.0</option>
+							<option value="7.5">7.5</option>
+							<option value="8.0">8.0</option>
+							<option value="8.5">8.5</option>
+							<option value="9.0">9.0</option>
+							<option value="9.5">9.5</option>
+							<option value="10.0">10.0</option>
+							<option value="10.5">10.5</option>
+							<option value="11.0">11.0</option>
+							<option value="11.5">11.5</option>
+							<option value="12.0">12.0</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="name">Gender:</label>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="Male" name="Male"
+								class="custom-control-input" value="Male" th:field="*{gender}">
+							<label class="custom-control-label" for="Male">Male</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="Female" name="Female"
+								class="custom-control-input" value="Female" th:field="*{gender}">
+							<label class="custom-control-label" for="Female">Female</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="photo">Photo:</label> <input type="text"
+							style="width: 35%;" class="form-control" th:field="*{photo}"
+							placeholder="Enter url">
+					</div>
+
+					<button class="btn btn-primary" type="submit">Submit</button>
+					<br>
+					<br /> <br>
+					<br />
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer class="ffooter"> </footer>
+</body>
+</html>

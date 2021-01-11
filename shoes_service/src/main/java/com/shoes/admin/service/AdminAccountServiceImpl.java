@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.shoes.entity.Admin;
 import com.shoes.repository.AdminAccountRepository;
+import com.shoes.runningshoes.service.RunningShoesService;
 import com.shoes.vo.AdminVO;
 
 @Service
@@ -22,6 +23,9 @@ public class AdminAccountServiceImpl implements AdminAccountService {
 	//
 	@Autowired
 	private AdminAccountRepository adminAccountRepository;
+	
+	@Autowired
+	private RunningShoesService runningShoesService;
 	
 	@Override
 	public void saveAdminDetails(AdminVO adminVO) {
@@ -41,5 +45,6 @@ public class AdminAccountServiceImpl implements AdminAccountService {
 		}
 		return mapsData;
 	}
+	
 	
 }

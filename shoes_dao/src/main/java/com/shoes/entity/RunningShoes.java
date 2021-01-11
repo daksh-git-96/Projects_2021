@@ -1,5 +1,7 @@
 package com.shoes.entity;
 
+import java.util.Arrays;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -21,23 +23,28 @@ public class RunningShoes {
 	@Column(name = "runningshoes_id", nullable = false, unique = true)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String brand;
 	private String name;
 	private String color;
 	private float price;
 	private float size;
-	private String photo;
+	private String gender;
+	private byte[] photo;
 	
-	@Access(AccessType.PROPERTY)
-	@ManyToOne(targetEntity = Admin.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "adminforeign_id", nullable = false)
-	private Admin admin;
- 
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 	public String getName() {
@@ -71,23 +78,28 @@ public class RunningShoes {
 	public void setSize(float size) {
 		this.size = size;
 	}
+	
+	public String getGender() {
+		return gender;
+	}
 
-	public String getPhoto() {
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(String photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
-	public Admin getAdmin() {
-		return admin;
+	@Override
+	public String toString() {
+		return "RunningShoes [id=" + id + ", brand=" + brand + ", name=" + name + ", color=" + color + ", price="
+				+ price + ", size=" + size + ", gender=" + gender + ", photo=" + Arrays.toString(photo) + "]";
 	}
 
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
-	
-	
-	
+
 }

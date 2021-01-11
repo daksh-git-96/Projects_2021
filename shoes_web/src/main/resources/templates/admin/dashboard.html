@@ -47,12 +47,18 @@ body {
 		<h3 align="Center">Welcome</h3>
 		<br><br/>
 		<div align = "center">
-			<a th:href="@{/}">
+			<a th:href="@{/admin/newshoepage}">
 				<button type="submit" class="btn btn-info">Add Running Shoes</button>
 			</a> 
 			<a th:href="@{/}">
 				<button type="submit" class="btn btn-info">Add Sneakers</button>
 			</a>
+			<br><br/>
+
+			<div align="center">
+				<h7 th:utext="${message}"></h7>
+			</div>
+
 		</div>
 	</div>
 <footer  class="ffooter">
