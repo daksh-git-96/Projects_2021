@@ -3,18 +3,45 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Security Questions</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+
+	//This will pick a row which will be clicked.
+	function getRowId(id) {
+		return "shoe_"+id;
+	}
+	
+	function removeShoe(id) {
+		//Now we are making AJAX call and calling a REST API
+		const options = {
+				method: 'DELETE',
+				body: {},
+				headers: {
+					'Accept': 'application/json'
+				}
+		};
+		var promise = fetch ("/s5/admin/runningShoeInventory/"+id, options);
+		promise.then(response=>response.json())
+		.then(function(data){
+			$("#"+getRowId(id)).hide();
+			if(data.status=="success") {
+				alert(data.message)
+			}
+		});
+	}
+	
+</script>
 
 <style>
 .ffooter {
@@ -55,7 +82,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="inventory,iter: ${listOfRunningShoes}">
+					<tr th:each="inventory,iter: ${listOfRunningShoes}" th:id="${'shoe_'+inventory.id}" >
 						<td><span th:utext="${iter.index+1}"></span></td>
 						<td th:text="${inventory.brand}" />
 						<td th:text="${inventory.name}" />
@@ -63,10 +90,12 @@
 						<td th:text="${inventory.price}" />
 						<td th:text="${inventory.size}" />
 						<td th:text="${inventory.gender}" />
-						<td><img th:src="@{/images/delete.png}" alt="page"
-							style="height: 5%;" />
-							<img th:src="@{/images/editicon.png}" alt="page"
-							style="height: 5%;" /><!--   	<a th:href="@{'/employee/deleteaquestion?qid='+${securityQuestionsVO.qid}}">
+						<td><img th:src="@{/images/delete.png}" alt="page" id="deleteIcon" th:onclick="|removeShoe(${inventory.id})|" style="height: 5%;" />
+							<img th:src="@{/images/editicon.png}" alt="page" id="editIcon" style="height: 5%;" />
+							
+							
+							
+							<!--   	<a th:href="@{'/employee/deleteaquestion?qid='+${securityQuestionsVO.qid}}">
     			<img th:src="@{/images/delete.png}" alt="page" style="width: 30%; height: 30%;" />
     		</a> --></td>
 						<!--   	<div th:switch="${questions.status}">
@@ -91,7 +120,6 @@
 			</table>
 
 		</div>
-	</div>
 	<footer class="ffooter"> </footer>
 
 </body>

@@ -10,4 +10,6 @@ public interface RunningShoesService {
 
 	public List<RunningShoesVO> findAll();
 
+	public void delete(int id);
+
 }

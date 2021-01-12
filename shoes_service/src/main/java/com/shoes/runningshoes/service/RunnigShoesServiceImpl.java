@@ -39,5 +39,10 @@ public class RunnigShoesServiceImpl implements RunningShoesService {
 		}
 		return listOfShoesVO;
 	}
+
+	@Override
+	public void delete(int id) {
+		runningShoesRepository.deleteById(id);
+	}
 	
 }

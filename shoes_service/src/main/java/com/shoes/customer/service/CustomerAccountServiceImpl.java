@@ -42,6 +42,5 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
 		BeanUtils.copyProperties(customerVO, customerEntity);
 		customerAccountDetailsRepository.save(customerEntity);
 	}
-	
-	
+   
 }
