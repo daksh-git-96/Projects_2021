@@ -2,6 +2,7 @@ package com.shoes.runningshoes.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.shoes.entity.RunningShoes;
 import com.shoes.repository.RunningShoesRepository;
 import com.shoes.vo.RunningShoesVO;
+import com.shoes.vo.UpdateRunningShoeVO;
 
 @Service
 @Transactional
@@ -45,4 +47,12 @@ public class RunnigShoesServiceImpl implements RunningShoesService {
 		runningShoesRepository.deleteById(id);
 	}
 	
+	@Override
+	public void updateRunningShoe(UpdateRunningShoeVO runningShoeVO) {
+		Optional<RunningShoes> optional = runningShoesRepository.findById(runningShoeVO.getId());
+		if(optional.isPresent()) {
+			optional.get().setColor(runningShoeVO.getColor());
+			optional.get().setPrice(runningShoeVO.getPrice());
+		}
+	}
 }
