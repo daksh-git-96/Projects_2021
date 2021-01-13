@@ -16,8 +16,9 @@ public class CartItemsServiceImpl implements CartItemsService {
 	@Autowired
 	private CartItemsRepository cartItemsRepository;
 	
-	public List<CartItemsVO> listCartItems(CustomerVO customerVO) {
-		return cartItemsRepository.findByCustomerId(customerVO);
-	}
+	/*
+	 * public List<CartItemsVO> listCartItems(CustomerVO customerVO) { return
+	 * cartItemsRepository.findByCustomerId(customerVO); }
+	 */
 	
 }
