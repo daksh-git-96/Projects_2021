@@ -1,5 +1,6 @@
 package com.shoes.customerui.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoes.customer.service.CustomerAccountService;
+import com.shoes.runningshoes.service.RunningShoesService;
 import com.shoes.vo.CustomerVO;
+import com.shoes.vo.RunningShoesVO;
 
 @Controller
 public class CustomerUIController {
 	
 	@Autowired
 	private CustomerAccountService customerAccountService;
+	
+	@Autowired
+	private RunningShoesService runningShoesService;
 	
 	@GetMapping(value = {"/","/home"})
 	public String homePage() {
@@ -59,10 +65,13 @@ public class CustomerUIController {
 		}
 	}
 	
-	@GetMapping("/customer/runningShoes")
-	public String runningShoesList() {
-		return "customer/runningshoes";
+	@GetMapping("/customer/runningShoesList")
+	public String runningShoesList(Model model) {
+		List<RunningShoesVO> listOfRunningShoes = runningShoesService.findAll();
+		model.addAttribute("listOfRunningShoes", listOfRunningShoes);
+		return "customer/runningshoeslist";
 	}
+	
 	
 	@GetMapping("/customer/sneakers")
 	public String sneakersList() {
